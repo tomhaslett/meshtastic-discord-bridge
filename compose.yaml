@@ -1,0 +1,21 @@
+services:
+  meshtastic-to-discord:
+    build: .
+    container_name: meshtastic-to-discord
+    image: meshtastic-to-discord:${APP_VERSION:-local}
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MQTT_BROKER: "${MQTT_BROKER:?Set MQTT_BROKER in .env}"
+      MQTT_PORT: "${MQTT_PORT:-1883}"
+      MQTT_TOPIC: "${MQTT_TOPIC:-msh/+/2/e/+/+}"
+      MQTT_USERNAME: "${MQTT_USERNAME:-}"
+      MQTT_PASSWORD: "${MQTT_PASSWORD:-}"
+      MQTT_PSK: "${MQTT_PSK:-default}"
+      DISCORD_WEBHOOK_URL: "${DISCORD_WEBHOOK_URL:?Set DISCORD_WEBHOOK_URL in .env}"
+      NODE_DB_PATH: "${NODE_DB_PATH:-/data/nodes.json}"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    volumes:
+      - ./nodes.json:/data/nodes.json
+
