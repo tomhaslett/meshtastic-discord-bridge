@@ -1,6 +1,6 @@
 # Meshtastic MQTT → Discord webhook bridge
 
-A small Dockerized Python service that subscribes to an MQTT topic and forwards each received message to a Discord channel through a **Discord webhook URL**. It does not use a Discord bot token or `discord.py`.
+A small vibed Dockerized Python service that subscribes to an MQTT topic and forwards each received message to a Discord channel through a **Discord webhook URL**. It does not use a Discord bot token or `discord.py`.
 
 ## Development summary
 
